@@ -42,11 +42,6 @@ public class DemoShopLayout implements ShopLayoutHandler {
         for (int x = 0; x < 9; x++)
             gui.setItem(GLASS_CENTER, x, 2);
 
-        final List<BuyGroup> items = new ArrayList<>();
-        for (int i = 0; i < 9; i++)
-            // Add group icon
-            
-
         // items
         if (event.getOpenPage() != null) {
             // glass
