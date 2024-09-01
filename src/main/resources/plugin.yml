@@ -1,0 +1,5 @@
+name: DemoCraftMBwLayout
+version: '${project.version}'
+main: fr.democraft.democraftmbwlayout.DemoCraftMBwLayout
+api-version: '1.21'
+depend: [MBedwars]
