@@ -1,0 +1,9 @@
+# Initial position of the QuickBuy button.
+# Unless an update change the HypixelV2 Layout, 0 is the right position
+initial-position: 0
+
+# New position that you want to apply to the QB button
+# By default 1, but can be ANYTHING
+edited-position: 1
+
+# Remember to use force-slot to move other buttons. This module overide any existing

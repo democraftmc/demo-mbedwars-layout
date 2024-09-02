@@ -17,31 +17,10 @@ public final class DemoCraftMBwLayout extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        getLogger().info("DEMOCRAFT's QuickBuy modifier has been enabled!");
+        getLogger().info("Injecting our malicous editing robot into MBedWars...");
+        this.saveDefaultConfig();
         getServer().getPluginManager().registerEvents(this, this);
-        GameAPI.get().registerShopLayout(new ShopLayout() {
-            final DemoShopLayout handler = new DemoShopLayout();
-
-            @Override
-            public String getName() {
-                return "DemoShopLayout"; // the name within your shop.yml
-            }
-
-            @Override
-            public boolean isBeta() {
-                return false;
-            }
-
-            @Override
-            public JavaPlugin getPlugin() {
-                return DemoCraftMBwLayout.this;
-            }
-
-            @Override
-            public ShopLayoutHandler getHandler() {
-                return this.handler;
-            }
-        });
+        getLogger().info("DEMOCRAFT's QuickBuy modifier has been enabled!");
     }
 
     @EventHandler
@@ -52,10 +31,10 @@ public final class DemoCraftMBwLayout extends JavaPlugin implements Listener {
             ChestGUI chestGui = (ChestGUI) shopGui;
 
             // Define the original and new positions
-            int originalSlot = 0; // x0, y0 (slot 0)
-            int newSlot = 1;      // x1, y0 (slot 1)
+            int originalSlot = getConfig().getInt("initial-position");
+            int newSlot = getConfig().getInt("edited-position");
 
-            // Get the item in the original slot (x0, y0)
+            // Get the item in the original slot
             GUIItem itemInQuickSlot = chestGui.getItem(originalSlot);
             GUIItem MENU_ENABLED = chestGui.getItem(9);
             GUIItem MENU_DISABLED = chestGui.getItem(10);
@@ -64,7 +43,7 @@ public final class DemoCraftMBwLayout extends JavaPlugin implements Listener {
             if (itemInQuickSlot != null) {
                 chestGui.setItem(itemInQuickSlot, newSlot); // Set item to new slot
                 chestGui.setItem(new ItemStack(Material.AIR), originalSlot); // Set item to new slot
-                chestGui.setItem(MENU_ENABLED, 10); // Set item to new slot
+                chestGui.setItem(MENU_ENABLED, originalSlot + 9);// Set item to new slot
                 chestGui.setItem(MENU_DISABLED, 9); // Set item to new slot
             }
 
