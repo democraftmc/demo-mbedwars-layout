@@ -43,7 +43,7 @@ public final class DemoCraftMBwLayout extends JavaPlugin implements Listener {
             if (itemInQuickSlot != null) {
                 chestGui.setItem(itemInQuickSlot, newSlot); // Set item to new slot
                 chestGui.setItem(new ItemStack(Material.AIR), originalSlot); // Set item to new slot
-                chestGui.setItem(MENU_ENABLED, originalSlot + 9);// Set item to new slot
+                chestGui.setItem(MENU_ENABLED, newSlot + 9);// Set item to new slot
                 chestGui.setItem(MENU_DISABLED, 9); // Set item to new slot
             }
 
