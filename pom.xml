@@ -62,6 +62,11 @@
           <id>marcely-repo</id>
           <url>https://repo.marcely.de/repository/maven-public/</url>
       </repository>
+      <repository>
+          <id>mrnavastar-releases</id>
+          <name>MrNavaStar's Repository</name>
+          <url>https://maven.mrnavastar.me/releases</url>
+      </repository>
   </repositories>
 
   <dependencies>
@@ -75,6 +80,12 @@
           <groupId>de.marcely.bedwars</groupId>
           <artifactId>API</artifactId>
           <version>5.4.10</version>
+          <scope>provided</scope>
+      </dependency>
+      <dependency>
+          <groupId>group.aelysium</groupId>
+          <artifactId>rustyconnector-toolkit</artifactId>
+          <version>0.8.0</version>
           <scope>provided</scope>
       </dependency>
   </dependencies>
