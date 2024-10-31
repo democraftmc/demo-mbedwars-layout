@@ -22,17 +22,18 @@ public final class DemoCraftMBwLayout extends JavaPlugin implements Listener {
     public void onEnable() {
         getLogger().info("Injecting our malicious editing robot into MBedWars...");
         this.saveDefaultConfig();
-        getLogger().info("DEMOCRAFT's QuickBuy modifier has been enabled!");
         getServer().getPluginManager().registerEvents(this, this);
-    }
-
-    @EventHandler
-    public void onMagicLinkDone(ConnectedEvent event) {
+        getLogger().info("DEMOCRAFT's QuickBuy modifier has been enabled!");
         getLogger().info("Loading RustyConnector MBedWars Hook...");
         HookAPI.get().registerCloudSystemHook(new RustyCloudHook());
-        BedwarsAPI.reload(null);
         getLogger().info("Rusty Cloud System has been successfully injected. Have fun!");
 
+    }
+
+    public class OnMCLoaderRegister extends Listener<RegisterEvent> {
+        public void handler(ConnectedEvent event) {
+            BedwarsAPI.reload(null);
+        }
     }
 
     @EventHandler
