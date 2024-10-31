@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DemoCraftMBwLayout.iml" filepath="$PROJECT_DIR$/DemoCraftMBwLayout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MRustyBridge.iml" filepath="$PROJECT_DIR$/MRustyBridge.iml" />
     </modules>
   </component>
 </project>
