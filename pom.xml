@@ -67,6 +67,11 @@
           <name>MrNavaStar's Repository</name>
           <url>https://maven.mrnavastar.me/releases</url>
       </repository>
+      <repository>
+          <id>papermc</id>
+          <name>papermc</name>
+          <url>https://repo.papermc.io/repository/maven-public/</url>
+      </repository>
   </repositories>
 
   <dependencies>
@@ -80,6 +85,12 @@
           <groupId>de.marcely.bedwars</groupId>
           <artifactId>API</artifactId>
           <version>5.4.10</version>
+          <scope>provided</scope>
+      </dependency>
+      <dependency>
+          <groupId>com.velocitypowered</groupId>
+          <artifactId>velocity-api</artifactId>
+          <version>3.4.0-SNAPSHOT</version>
           <scope>provided</scope>
       </dependency>
       <dependency>

@@ -9,17 +9,13 @@ import de.marcely.bedwars.api.hook.CloudSystemHook;
 import group.aelysium.rustyconnector.toolkit.mc_loader.server_info.IServerInfoService;
 
 public class RustyCloudHook implements CloudSystemHook {
-    private Plugin managingPlugin;
     private Plugin hookedPlugin;
     private IServerInfoService RustyServer;
 
-    public void RustyConnectorPlugin(JavaPlugin plugin) {
-        this.managingPlugin = plugin;
-        this.hookedPlugin = Bukkit.getPluginManager().getPlugin("rustyconnector-paper");
-    }
-
     public Plugin getManagingPlugin() {
-        return this.managingPlugin;
+        Plugin managingPlugin = Bukkit.getPluginManager().getPlugin("DemoCraftMBwLayout");
+        this.hookedPlugin = Bukkit.getPluginManager().getPlugin("rustyconnector-paper");
+        return managingPlugin;
     }
 
     public Plugin getHookedPlugin() {
