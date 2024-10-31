@@ -5,4 +5,4 @@ api-version: '1.13'
 description: A MBedWars companion plugin that allow server admins to edit the position of the quickbuy button
 author: Funasitien
 website: https://f.drealclouds.fr
-depend: [MBedwars]
+depend: [MBedwars, rustyconnector-paper]
