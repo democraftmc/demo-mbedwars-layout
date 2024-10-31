@@ -10,8 +10,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.Material;
+import org.bukkit.command.CommandSender;
+import de.marcely.bedwars.api.BedwarsAPI;
 
 import group.aelysium.rustyconnector.toolkit.mc_loader.events.magic_link.ConnectedEvent;
+import group.aelysium.rustyconnector.toolkit.mc_loader.magic_link.IMagicLinkService;
 import group.aelysium.rustyconnector.toolkit.core.events.Event;
 public final class DemoCraftMBwLayout extends JavaPlugin implements Listener {
 
@@ -27,7 +30,9 @@ public final class DemoCraftMBwLayout extends JavaPlugin implements Listener {
     public void onMagicLinkDone(ConnectedEvent event) {
         getLogger().info("Loading RustyConnector MBedWars Hook...");
         HookAPI.get().registerCloudSystemHook(new RustyCloudHook());
+        BedwarsAPI.reload(null);
         getLogger().info("Rusty Cloud System has been successfully injected. Have fun!");
+
     }
 
     @EventHandler
