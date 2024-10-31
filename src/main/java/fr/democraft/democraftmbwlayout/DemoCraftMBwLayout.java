@@ -11,15 +11,20 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.Material;
 
+import group.aelysium.rustyconnector.toolkit.mc_loader.events.magic_link.ConnectedEvent;
+import group.aelysium.rustyconnector.toolkit.core.events.Event;
 public final class DemoCraftMBwLayout extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
         getLogger().info("Injecting our malicious editing robot into MBedWars...");
         this.saveDefaultConfig();
-        getServer().getPluginManager().registerEvents(this, this);
         getLogger().info("DEMOCRAFT's QuickBuy modifier has been enabled!");
+        getServer().getPluginManager().registerEvents(this, this);
+    }
 
+    @EventHandler
+    public void onMagicLinkDone(ConnectedEvent event) {
         getLogger().info("Loading RustyConnector MBedWars Hook...");
         HookAPI.get().registerCloudSystemHook(new RustyCloudHook());
         getLogger().info("Rusty Cloud System has been successfully injected. Have fun!");
