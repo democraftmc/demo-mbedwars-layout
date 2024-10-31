@@ -4,10 +4,11 @@ import de.marcely.bedwars.api.hook.HookAPI;
 import de.marcely.bedwars.tools.gui.GUI;
 import de.marcely.bedwars.tools.gui.type.ChestGUI;
 import de.marcely.bedwars.tools.gui.GUIItem;
+import group.aelysium.rustyconnector.toolkit.RustyConnector;
 import org.bukkit.plugin.java.JavaPlugin;
 import de.marcely.bedwars.api.event.ShopGUIPostProcessEvent;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
+
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -16,7 +17,12 @@ import de.marcely.bedwars.api.BedwarsAPI;
 import group.aelysium.rustyconnector.toolkit.mc_loader.events.magic_link.ConnectedEvent;
 import group.aelysium.rustyconnector.toolkit.mc_loader.magic_link.IMagicLinkService;
 import group.aelysium.rustyconnector.toolkit.core.events.Event;
-public final class DemoCraftMBwLayout extends JavaPlugin implements Listener {
+import group.aelysium.rustyconnector.toolkit.core.events.Listener;
+import group.aelysium.rustyconnector.toolkit.mc_loader.central.IMCLoaderTinder;
+
+import java.util.Optional;
+
+public final class DemoCraftMBwLayout extends JavaPlugin implements org.bukkit.event.Listener {
 
     @Override
     public void onEnable() {
@@ -27,10 +33,9 @@ public final class DemoCraftMBwLayout extends JavaPlugin implements Listener {
         getLogger().info("Loading RustyConnector MBedWars Hook...");
         HookAPI.get().registerCloudSystemHook(new RustyCloudHook());
         getLogger().info("Rusty Cloud System has been successfully injected. Have fun!");
-
     }
 
-    public class OnMCLoaderRegister extends Listener<RegisterEvent> {
+    public static class OnMagicLinkLoaded implements Listener<ConnectedEvent> {
         public void handler(ConnectedEvent event) {
             BedwarsAPI.reload(null);
         }
