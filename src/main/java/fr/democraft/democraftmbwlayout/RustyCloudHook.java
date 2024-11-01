@@ -13,7 +13,6 @@ import group.aelysium.rustyconnector.toolkit.mc_loader.server_info.IServerInfoSe
 public class RustyCloudHook implements CloudSystemHook {
     private Plugin hookedPlugin;
     private IServerInfoService RustyServer;
-    private IMCLoaderTinder tinder;
 
     public Plugin getManagingPlugin() {
         Plugin managingPlugin = Bukkit.getPluginManager().getPlugin("DemoCraftMBwLayout");
@@ -25,10 +24,13 @@ public class RustyCloudHook implements CloudSystemHook {
         return this.hookedPlugin;
     }
 
+    public String updateServerUUID() {
+        return RustyServer.uuid().toString();
+    }
+
     @Override
     public String getServerName() {
-        this.tinder = RustyConnector.Toolkit.mcLoader().orElseThrow();
-        return .uuid().toString();
+        return RustyServer.uuid().toString();
     }
 
     @Override

@@ -18,7 +18,10 @@ import group.aelysium.rustyconnector.toolkit.mc_loader.events.magic_link.Connect
 import group.aelysium.rustyconnector.toolkit.mc_loader.magic_link.IMagicLinkService;
 import group.aelysium.rustyconnector.toolkit.core.events.Event;
 import group.aelysium.rustyconnector.toolkit.core.events.Listener;
+import group.aelysium.rustyconnector.toolkit.core.events.EventManager;
+import group.aelysium.rustyconnector.toolkit.velocity.events.mc_loader.MCLoaderRegisterEvent;
 import group.aelysium.rustyconnector.toolkit.mc_loader.central.IMCLoaderTinder;
+
 
 import java.util.Optional;
 
@@ -32,11 +35,19 @@ public final class DemoCraftMBwLayout extends JavaPlugin implements org.bukkit.e
         getLogger().info("DEMOCRAFT's QuickBuy modifier has been enabled!");
         getLogger().info("Loading RustyConnector MBedWars Hook...");
         HookAPI.get().registerCloudSystemHook(new RustyCloudHook());
+        IMCLoaderTinder tinder;
+        tinder = RustyConnector.Toolkit.mcLoader().orElseThrow();
+        tinder.onStart(flame -> {
+            getLogger().warning(flame.versionAsString());
+            flame.services().events().on(MCLoaderRegisterEvent.class, new OnMagicLinkLoaded());
+        });
         getLogger().info("Rusty Cloud System has been successfully injected. Have fun!");
     }
 
-    public static class OnMagicLinkLoaded implements Listener<ConnectedEvent> {
+    public class OnMagicLinkLoaded implements Listener<ConnectedEvent> {
         public void handler(ConnectedEvent event) {
+            getLogger().info(new RustyCloudHook().updateServerUUID());
+            getLogger().info("Rusty Magic Link booted. Restarting MBedWars instance...");
             BedwarsAPI.reload(null);
         }
     }
